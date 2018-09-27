@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D12AFA3-5538-446B-A036-FEAB979C7285}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShiolWinSvc</RootNamespace>
+    <AssemblyName>ShiolService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ShiolWinSvc.WebServerServiceProvider</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug x86|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug x86\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug x86|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug x86\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RJCP.SerialPortStream">
+      <HintPath>..\packages\RJCP.SerialPortStream.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HttpServer\Config\ConfigManager.cs" />
+    <Compile Include="HttpServer\Config\ConfigMap.cs" />
+    <Compile Include="HttpServer\Config\EnvironmentVariableAttribute.cs" />
+    <Compile Include="HttpServer\Config\IConfigurable.cs" />
+    <Compile Include="HttpServer\Deploy\DeployConfigLabelAttribute.cs" />
+    <Compile Include="HttpServer\Deploy\DeploymentHelper.cs" />
+    <Compile Include="HttpServer\Deploy\EnvironmentVariable.cs" />
+    <Compile Include="HttpServer\Http\Backend\HttpRequest.cs" />
+    <Compile Include="HttpServer\Http\Backend\RequestException.cs" />
+    <Compile Include="HttpServer\Http\Backend\RequestStream.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\HttpResponseWriter.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\HttpSession.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\ParseRequestException.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\RequestParser.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\SessionBase.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\SessionStreamException.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\TcpSessionBase.cs" />
+    <Compile Include="HttpServer\Http\Backend\Tcp\WebSocketSession.cs" />
+    <Compile Include="HttpServer\Http\Backend\WebSocketException.cs" />
+    <Compile Include="HttpServer\Http\Backend\WebSockets\Extensions.cs" />
+    <Compile Include="HttpServer\Http\Backend\WebSockets\FrameDecoder.cs" />
+    <Compile Include="HttpServer\Http\Backend\WebSockets\FrameEncoder.cs" />
+    <Compile Include="HttpServer\Http\Backend\WebSockets\OpCode.cs" />
+    <Compile Include="HttpServer\Http\BCLHttpListenerBackend.cs" />
+    <Compile Include="HttpServer\Http\ContentTypes.cs" />
+    <Compile Include="HttpServer\Http\EndpointAttribute.cs" />
+    <Compile Include="HttpServer\Http\Endpoints.cs" />
+    <Compile Include="HttpServer\Http\Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="HttpServer\Http\Extensions\HttpResponseExtensions.cs" />
+    <Compile Include="HttpServer\Http\Filters.cs" />
+    <Compile Include="HttpServer\Http\Handlers\Handler.cs" />
+    <Compile Include="HttpServer\Http\Handlers\StaticFileHandler.cs" />
+    <Compile Include="HttpServer\Http\HttpBackend.cs" />
+    <Compile Include="HttpServer\Http\HttpBody.cs" />
+    <Compile Include="HttpServer\Http\HttpHeader.cs" />
+    <Compile Include="HttpServer\Http\HttpResponse.cs" />
+    <Compile Include="HttpServer\Http\HttpsBackend.cs" />
+    <Compile Include="HttpServer\Http\IHttpRequest.cs" />
+    <Compile Include="HttpServer\Http\IWebSocketSession.cs" />
+    <Compile Include="HttpServer\Http\IWebSocketUpgradeRequest.cs" />
+    <Compile Include="HttpServer\Http\Json.cs" />
+    <Compile Include="HttpServer\Http\JsonEndpointBuilder.cs" />
+    <Compile Include="HttpServer\Http\JsonHandler.cs" />
+    <Compile Include="HttpServer\Http\JsonRequest.cs" />
+    <Compile Include="HttpServer\Http\JsonResponse.cs" />
+    <Compile Include="HttpServer\Http\Lift.cs" />
+    <Compile Include="HttpServer\Http\Method.cs" />
+    <Compile Include="HttpServer\Http\Metrics\Endpoints\HandlerTime.cs" />
+    <Compile Include="HttpServer\Http\Metrics\Endpoints\HourlyStatusCodeCounter.cs" />
+    <Compile Include="HttpServer\Http\Metrics\Endpoints\StatusCodeCounter.cs" />
+    <Compile Include="HttpServer\Http\Metrics\HostReport.cs" />
+    <Compile Include="HttpServer\Http\Metrics\RequestLogs.cs" />
+    <Compile Include="HttpServer\Http\Metrics\RouterMetrics.cs" />
+    <Compile Include="HttpServer\Http\RestRequestParameters.cs" />
+    <Compile Include="HttpServer\Http\Route.cs" />
+    <Compile Include="HttpServer\Http\Router.cs" />
+    <Compile Include="HttpServer\Http\RouteTable.cs" />
+    <Compile Include="HttpServer\Http\Routing\Endpoint.cs" />
+    <Compile Include="HttpServer\Http\Routing\ITemplatePart.cs" />
+    <Compile Include="HttpServer\Http\Routing\RateLimitedEndpoint.cs" />
+    <Compile Include="HttpServer\Http\Routing\Route.cs" />
+    <Compile Include="HttpServer\Http\WebSocketMessage.cs" />
+    <Compile Include="HttpServer\Http\WebSocketUpgradeResponse.cs" />
+    <Compile Include="Logging\LoggingProvider.cs" />
+    <Compile Include="Logging\NullLogger.cs" />
+    <Compile Include="Logging\FileWriterLogger.cs" />
+    <Compile Include="Logging\TextWriterLogger.cs" />
+    <Compile Include="HttpServer\Utils\BufferUtils.cs" />
+    <Compile Include="HttpServer\Utils\Compression.cs" />
+    <Compile Include="HttpServer\Utils\CountingDictionary.cs" />
+    <Compile Include="HttpServer\Utils\LeakyBucket.cs" />
+    <Compile Include="HttpServer\Utils\LifeCycleBase.cs" />
+    <Compile Include="HttpServer\Utils\LifeCycleToken.cs" />
+    <Compile Include="HttpServer\Utils\RateCounter.cs" />
+    <Compile Include="HttpServer\Utils\Reservoir.cs" />
+    <Compile Include="HttpServer\Utils\Streams.cs" />
+    <Compile Include="HttpServer\Utils\Time.cs" />
+    <Compile Include="HttpServer\Utils\WaitableTimer.cs" />
+    <Compile Include="Logging\ConfigFromFile.cs" />
+    <Compile Include="Net\AsyncSocket.cs" />
+    <Compile Include="Net\IPClient.cs" />
+    <Compile Include="ServiceProvider\AbstractServiceProvider.cs" />
+    <Compile Include="Serial\AsyncSerial.cs" />
+    <Compile Include="DeviceProvider\IDeviceProvider.cs" />
+    <Compile Include="DeviceProvider\IPDeviceProvider.cs" />
+    <Compile Include="Logging\LogFile.cs" />
+    <Compile Include="Logging\XmlLogger.cs" />
+    <Compile Include="DeviceProvider\ManagerDeviceProvider.cs" />
+    <Compile Include="MainService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainService.Designer.cs">
+      <DependentUpon>MainService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DeviceProvider\SerialDeviceProvider.cs" />
+    <Compile Include="DeviceProvider\UniversalDeviceProvider.cs" />
+    <Compile Include="FrameProvider\UniversalFrameProvider.cs" />
+    <Compile Include="XmlConfig\XMLConfig.cs" />
+    <Compile Include="ServiceProvider\WebServerServiceProvider.cs" />
+    <Compile Include="ServiceProvider\ShiolSqlServerProvider.cs" />
+    <Compile Include="XmlConfig\Crypto\CryptoXML.cs" />
+    <Compile Include="XmlConfig\Crypto\FileEncryptor.cs" />
+    <Compile Include="XmlConfig\SettingItem.cs" />
+    <Compile Include="XmlConfig\Settings.cs" />
+    <Compile Include="XmlConfig\SettingsFactory.cs" />
+    <Compile Include="XmlConfig\SettingsInterfaces.cs" />
+    <Compile Include="XmlConfig\SettingsManager.cs" />
+    <Compile Include="XmlConfig\Storage\EncryptedXmlSettingsStorage.cs" />
+    <Compile Include="XmlConfig\Storage\ISettingsStorage.cs" />
+    <Compile Include="XmlConfig\Storage\PlainXmlSettingsStorage.cs" />
+    <Compile Include="XmlConfig\Storage\XmlSettingsStorage.cs" />
+    <Compile Include="XmlConfig\TestSettings.cs" />
+    <Compile Include="XmlConfig\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShiolSqlServer\AD.csproj">
+      <Project>{8591df0b-b1cb-45a6-8bfe-34028e799ac5}</Project>
+      <Name>AD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,55 @@
+<Settings version="1.0.0.0">
+  <item key="ShiolConfigurationInfo">
+    <ServiceShiolConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CentralType>Hotel Ferre Miraflores</CentralType>
+  <LogDirectory>D:\SHIOL\REgistros\</LogDirectory>
+  <MinCallDuration>20</MinCallDuration>
+  <SaveAllCalls>true</SaveAllCalls>
+  <ExcludedStrings>Date,---,ATQ,</ExcludedStrings>
+  <MinLengthFrame>65</MinLengthFrame>
+  <TryReconnectEvery>10</TryReconnectEvery>
+  <WebPort>8080</WebPort>
+  <SqlServerConnection>
+    <ConnectionString>user id=sa;password=server$123;data source=servershiol;initial catalog=Shiol_Datos</ConnectionString>
+    <Connection>true</Connection>
+  </SqlServerConnection>
+  <Communication>
+    <CentralName>SUPERXLS</CentralName>
+    <Conexion>Serial</Conexion>
+    <SerialSettings>COM4,9600,8,None,None</SerialSettings>
+  </Communication>
+  <DataFrames>
+    <DataFrame>
+      <Name>Trama 2</Name>
+      <ID>1</ID>
+      <Prefix>@</Prefix>
+      <Length>65</Length>
+      <MaxLength>0</MaxLength>
+      <Structure>
+        <Date>0,8,MM/DD/YY</Date>
+        <Time>9,7,hh:mmtt</Time>
+        <UserID>19,3</UserID>
+        <DialedNumber>26,13</DialedNumber>
+        <Duration>57,8,hh:mm'ss</Duration>
+        <Anexo>19,3</Anexo>
+      </Structure>
+    </DataFrame>
+    <DataFrame>
+      <Name>LLamada Saliente</Name>
+      <ID>3</ID>
+      <Prefix>N</Prefix>
+      <Length>71</Length>
+      <MaxLength>0</MaxLength>
+      <Structure>
+        <Date>0,8,DD/MM//YY</Date>
+        <Time>9,7,hh:mmtt</Time>
+        <UserID>66,5</UserID>
+        <DialedNumber>26,16</DialedNumber>
+        <Duration>57,8,hh:mm'ss</Duration>
+        <Anexo>19,4</Anexo>
+      </Structure>
+    </DataFrame>
+  </DataFrames>
+</ServiceShiolConfiguration>
+  </item>
+</Settings>
